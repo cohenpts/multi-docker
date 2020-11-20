@@ -37,3 +37,6 @@ jobs:
     -
       name: Build the worker Docker image
       run: docker build ./worker --file ./worker/Dockerfile --tag cohenpts/multi-worker
+    -
+      name: Push the built docker images
+      run: docker push cohenpts/multi-client && cohenpts/multi-nginx && cohenpts/multi-server && cohenpts/multi-worker
