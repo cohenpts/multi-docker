@@ -34,3 +34,12 @@ jobs:
     -
       name: Push the client docker image
       run: docker push cohenpts/multi-client
+    -
+      name: Push the nginx docker image
+      run: docker push cohenpts/multi-nginx
+    -
+      name: Push the server docker image
+      run: docker push cohenpts/multi-server
+    -
+      name: Push the worker docker image
+      run: docker push cohenpts/multi-worker
