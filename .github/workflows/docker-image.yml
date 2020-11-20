@@ -26,35 +26,5 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     -
-      name: Build and push client Docker image
-      uses: docker/build-push-action@v2
-      with:
-        path: client
-
-        platforms: linux/amd64,linux/arm64,linux/386
-        push: true
-        tags: cohenpts/multi-client:latest
-    -
-      name: Build and push nginx Docker image
-      uses: docker/build-push-action@v2
-      with:
-        path: nginx
-        platforms: linux/amd64,linux/arm64,linux/386
-        push: true
-        tags: cohenpts/multi-nginx:latest
-    -
-      name: Build and push server Docker image
-      uses: docker/build-push-action@v2
-      with:
-        path: server
-        platforms: linux/amd64,linux/arm64,linux/386
-        push: true
-        tags: cohenpts/multi-server:latest
-    -
-      name: Build and push worker Docker image
-      uses: docker/build-push-action@v2
-      with:
-        path: worker
-        platforms: linux/amd64,linux/arm64,linux/386
-        push: true
-        tags: cohenpts/multi-worker:latest
+      name: Build the client Docker image
+      run: docker build ./client --file ./client/Dockerfile --tag cohenpts/multi-client
