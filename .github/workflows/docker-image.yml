@@ -26,38 +26,14 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     -
-      name: Build and push client Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: ./client
-        file: ./client/Dockerfile
-        platforms: linux/amd64,linux/arm64,linux/386
-        push: true
-        tags: cohenpts/multi-client:latest
+      name: Build the client Docker image
+      run: docker build ./client --file ./client/Dockerfile --tag cohenpts/multi-client
     -
-      name: Build and push nginx Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: ./nginx
-        file: ./nginx/Dockerfile
-        platforms: linux/amd64,linux/arm64,linux/386
-        push: true
-        tags: cohenpts/multi-nginx:latest
+      name: Build the nginx Docker image
+      run: docker build ./nginx --file ./nginx/Dockerfile --tag cohenpts/multi-nginx
     -
-      name: Build and push server Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: ./server
-        file: ./server/Dockerfile
-        platforms: linux/amd64,linux/arm64,linux/386
-        push: true
-        tags: cohenpts/multi-server:latest
+      name: Build the server Docker image
+      run: docker build ./server --file ./server/Dockerfile --tag cohenpts/multi-server
     -
-      name: Build and push worker Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: ./worker
-        file: ./worker/Dockerfile
-        platforms: linux/amd64,linux/arm64,linux/386
-        push: true
-        tags: cohenpts/multi-worker:latest
+      name: Build the worker Docker image
+      run: docker build ./worker --file ./worker/Dockerfile --tag cohenpts/multi-worker
