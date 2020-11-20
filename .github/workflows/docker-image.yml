@@ -27,4 +27,4 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     -
       name: Build the client Docker image
-      run: docker build ../client --file ../client/Dockerfile --tag cohenpts/multi-client
+      run: docker build --tag cohenpts/multi-client ./client
