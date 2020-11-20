@@ -26,5 +26,11 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     -
+      name: echo dir
+      run: echo $(pwd)
+    -
+      name: echo dir
+      run: echo $(ls)
+    -
       name: Build the client Docker image
       run: docker build --tag cohenpts/multi-client ./client
